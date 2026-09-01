@@ -1,0 +1,968 @@
+<div class="igait-app">
+<style>/* ================= SAFE ISOLATION ================= */
+
+.igait-app,
+.igait-app * {
+  box-sizing: border-box;
+}
+
+.igait-app {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  background: #0B1118;
+  color: #F5F7FA;
+  line-height: 1.6;
+   overflow-x: hidden;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ================= VARIABLES ================= */
+
+.igait-app {
+  --accent: #C89B3C;
+  --bg-dark: #0B1118;
+  --bg-deep: #0F1722;
+  --card-dark: #0F1B27;
+  --text-muted: #AAB4C2;
+}
+
+/* ================= HERO ================= */
+
+.hero-apple {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* FIXED LAYER STACKING */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.igaitconsulting.com/wp-content/uploads/2026/09/Igait-bg.png");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(6,12,18,0.95) 0%,
+    rgba(6,12,18,0.85) 40%,
+    rgba(6,12,18,0.3) 70%,
+    rgba(6,12,18,0) 100%
+  );
+  z-index: 2;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  padding: 80px 24px;
+  margin: auto;
+  width: 100%;
+}
+
+.hero-heading span {
+  color: var(--accent);
+}
+
+/* ================= HERO TITLE STRUCTURE FIX ================= */
+
+.hero-heading {
+  font-size: clamp(2.1rem, 1.1rem + 2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 70px;
+  max-width: 900px;
+}
+
+.hero-heading span {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+
+
+/* ================= SERVICES (GLASS RESTORED) ================= */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.service-card {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+
+    padding: 10px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 15px;
+
+    background: rgba(20, 30, 40, 0.65);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #e9a91f;
+
+    background: rgba(20, 30, 40, 0.85);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+    width: 90px;
+    min-width: 90px;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 22px;
+
+    border-right: 1px solid rgba(255, 193, 7, 0.5);
+}
+
+.service-icon img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service-content h6 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    line-height: 1.35;
+
+    text-transform: uppercase;
+}
+
+/* Gold small line */
+.service-content h6::after {
+    content: "";
+
+    display: block;
+
+    width: 40px;
+    height: 2px;
+
+    margin-top: 12px;
+
+    background: #e9a91f;
+}
+/* ================= HERO CTA BUTTON ================= */
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 38px;
+  border-radius: 40px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  z-index: 1;
+}
+
+/* Fill Layer */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  z-index: -1;
+}
+
+/* Hover Effect */
+.btn-primary:hover {
+  color: #111;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(200,155,60,0.45);
+}
+
+.btn-primary:hover::before {
+  transform: scaleX(1);
+}
+
+/* ================= INTRO ================= */
+
+.section-intro {
+  background: var(--bg-deep);
+  padding: 80px 24px;
+}
+
+.container-split {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+}
+
+.container-split p {
+  color: var(--text-muted);
+}
+
+/* ================= ABOUT ================= */
+
+.section-about {
+  background: #ffffff;
+  color: #101218;
+  padding: 80px 24px;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.section-about {
+  background: #ffffff;
+  color: #101218;
+  padding: 90px 24px;
+}
+
+.about-container img {
+  border-radius: 20px;
+}
+
+
+/* ================= ABOUT HEADER FIX ================= */
+
+.about-content h2 {
+  color: #0F1722; /* deep executive dark */
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.about-content p {
+  color: #555;
+}
+/* ================= ABOUT CTA BUTTON ================= */
+
+.btn-outline {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 14px 34px;
+  border: 2px solid var(--accent);
+  border-radius: 40px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* Smooth Fill Animation */
+.btn-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  z-index: -1;
+}
+
+.btn-outline span,
+.btn-outline {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover Effect */
+.btn-outline:hover {
+  color: #111;
+}
+
+.btn-outline:hover::before {
+  transform: scaleX(1);
+}
+
+/* Slight Lift */
+.btn-outline:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(200,155,60,0.35);
+}
+
+
+/* ================= FOCUS ================= */
+
+.section-focus {
+  background: var(--bg-dark);
+  padding: 80px 24px;
+}
+
+.section-header {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+}
+
+/* ================= FOCUS SECTION HEADER ================= */
+
+.section-header {
+  max-width: 900px;
+  margin: 0 auto 70px auto;
+  text-align: center;
+}
+
+/* Small Label */
+.section-header > span {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+/* Main Heading */
+.section-header h2 {
+  font-size: clamp(2rem, 1.2rem + 2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 22px;
+  color: #F5F7FA;
+}
+
+/* Gold Highlight Line */
+.section-header h2 span {
+  display: block;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Supporting Paragraph */
+.section-header p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.focus-card {
+  background: var(--card-dark);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.focus-card:hover {
+  transform: translateY(-6px);
+}
+
+.focus-image img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.focus-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  
+}
+
+/* EQUAL HEADING HEIGHT */
+.focus-content h3 {
+  min-height: 56px;   /* keeps all titles same height */
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+/* SHOW ONLY 4 LINES */
+
+.focus-text {
+  color: var(--text-muted);
+  margin: 12px 0 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 96px;
+}
+
+.focus-readmore {
+    margin-top: auto;
+  color: var(--accent);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= MODAL (ZOOM + BLUR) ================= */
+
+.igait-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  z-index: 9999;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.igait-modal.active {
+  display: flex;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: #111C26;
+  border-radius: 18px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 30px;
+  position: relative;
+  transform: scale(0.85);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1),
+              opacity 0.25s ease;
+}
+
+.igait-modal.active .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 100px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent);
+}
+.modal-contact {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.contact-title {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.contact-items {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  text-decoration: none;
+  color: white;
+  background: #C89B3C;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  background: #a87e2f;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:1024px){
+  .container-split,
+  .about-container { grid-template-columns: 1fr; }
+  .focus-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width:640px){
+  .focus-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width:540px){
+  .focus-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- HERO -->
+<section class="hero-apple">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-container">
+    <!--<h1 class="hero-heading">-->
+    <!--  Research & Professional Skill Development-->
+    <!--  <span>Driving Career Growth & Business Profitability</span>-->
+    <!--  in the Apparel Garment Industry-->
+    <!--</h1>-->
+    <h1 class="hero-heading">
+      Productivity Research Lab 
+      <span>Professional Skill Development</span><br>
+      Apparel & Garment Industry
+    </h1>
+
+   <div class="services-grid">
+
+    <!-- 1 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/01_research_lab_on_productivity.png"
+                 alt="Research Lab on Productivity">
+        </div>
+        <div class="service-content">
+            <h6>Research Lab on Productivity</h6>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/02_practical_applications_of_toc.png"
+                 alt="Practical Applications of TOC">
+        </div>
+        <div class="service-content">
+            <h6>Practical Applications of TOC</h6>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/03_operation_digitisation.png"
+                 alt="Operation Digitisation">
+        </div>
+        <div class="service-content">
+            <h6>Operation Digitisation</h6>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/04_decision_making_reports.png"
+                 alt="Decision Making Reports">
+        </div>
+        <div class="service-content">
+            <h6>Decision Making Reports</h6>
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/05_online_seminars.png"
+                 alt="Online Seminars">
+        </div>
+        <div class="service-content">
+            <h6>Online Seminars</h6>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/06_certification_courses.png"
+                 alt="Certification Courses">
+        </div>
+        <div class="service-content">
+            <h6>Certification Courses On Timestudy &amp; Operation Digitisation</h6>
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/08_lead_time_reduction.png"
+                 alt="Lead Time Reduction">
+        </div>
+        <div class="service-content">
+            <h6>Lead Time Reduction</h6>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <img src="https://www.igaitconsulting.com/wp-content/uploads/2026/08/09_quality_engineering.png"
+                 alt="Quality Engineering">
+        </div>
+        <div class="service-content">
+            <h6>Quality Engineering</h6>
+        </div>
+    </div>
+
+</div>
+
+    <a href="https://www.igaitconsulting.com/click-for-online-demo/" class="btn-primary">Contact Us</a>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="section-intro">
+  <div class="container-split">
+    <div>
+      <h2>
+        At IGAIT Consulting, we are dedicated to transforming
+        individual potential into professional excellence & Business Profits
+      </h2>
+    </div>
+    <div>
+      <p>
+        IGAIT Consulting partners with apparel organizations and professionals
+        to strengthen decision-making, operational efficiency, and leadership capability.
+      </p>
+      <p>
+        Our approach combines industry expertise, critical thinking,
+        and proven operational frameworks to help teams achieve
+        sustainable productivity and profitability.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-about">
+  <div class="about-container">
+    <div>
+      <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/Screenshot-2026-01-28-183253.png" alt="About IGAIT">
+    </div>
+    <div class="about-content">
+      <h2>About IGAIT Consulting</h2>
+      <p>
+        IGAIT Consulting is a specialized management consultancy focused on
+        training, coaching, research and operational improvement
+        for the apparel and garment manufacturing industry.
+      </p>
+      <p>
+        Led by Mr. Ravee Parthasaarathi, our team brings expertise in
+        industrial engineering, operations management, analytics,
+        and Theory of Constraints (TOC) to deliver practical,
+        results-driven solutions.
+      </p>
+      <a href="https://www.igaitconsulting.com/about-us/" class="btn-outline">Explore Our Approach</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS -->
+<section class="section-focus">
+  <div class="section-header">
+    <span>Our Focus Areas</span>
+    <h2>
+      Adding Value to Customer Through <br>
+      <span>Research, Training and Skill Development</span>
+    </h2>
+    <p>
+      Our consulting and training initiatives are designed to align strategic intent with operational execution, enabling measurable business outcomes across apparel organizations.
+    </p>
+  </div>
+
+
+  <div class="focus-grid">
+
+    <!-- 1 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/Operation%20Digitisation.png">
+      </div>
+      <div class="focus-content">
+        <h3>KAIZEN – Step-by-Step Improvements</h3>
+        <p class="focus-text">
+We apply The concept of Kaizen focuses on continuous improvement by progressing one step at a time. This structured and incremental approach is highly effective in driving sustainable results while keeping teams motivated and engaged.
+
+At IGAIT, we provide practical methods to enhance performance by concentrating on one operation at a time. The process involves capturing operational videos, conducting detailed discussions with team members and subject matter experts, and preparing clear, easily shareable notes. Using the VAS–Kaizen software, organizations can systematically analyze, refine, and improve individual operations, ensuring focused improvement and measurable progress.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/retail-s-new-normal-employee-wearing-mask-covid-19.jpg">
+      </div>
+      <div class="focus-content">
+        <h3>Executive & Group Mentoring</h3>
+        <p class="focus-text">
+At IGAIT, we engage experienced apparel industry professionals to mentor individuals and teams, providing structured guidance, domain knowledge, and career-focused support. This mentorship strengthens professional skills, expands industry networks, builds confidence, and enhances overall performance—creating measurable value for both the individual and the organization.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/ChatGPT-Image-Jan-29-v2.png">
+      </div>
+      <div class="focus-content">
+        <h3>Certification Courses</h3>
+        <p class="focus-text">
+Our certification courses for garment and apparel professionals are structured to enable participants to secure higher salaries and access better-paying roles. The programs bridge practical industry experience with the latest manufacturing and management concepts, while strengthening professional confidence through formal validation of skills and competencies. Designed to be highly cost-effective, these certifications deliver measurable value to both employees and employers by enhancing capability, credibility, and overall organizational performance.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/side-view-female-fashion-designer-working-atelier-with-laptop-colleagues.jpg">
+      </div>
+      <div class="focus-content">
+        <h3>Online Seminars</h3>
+        <p class="focus-text">
+We conduct regular online seminars to support skill development within the garment and apparel industry. Led by experienced industry experts, these seminars provide a structured platform for meaningful interaction with garment professionals, introducing new ideas, emerging skills, and real-world success stories that strengthen confidence and professional capability.
+
+They create opportunities to connect with like-minded senior professionals, foster a strong sense of industry community, and reignite passion for career advancement. Designed to be convenient and non-disruptive to regular work schedules, these sessions deliver practical insights, strategic direction, and renewed optimism for sustained professional growth.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/ChatGPT%20Image%20Feb%2013%2C%202026%2C%2010_34_25%20AM.png">
+      </div>
+      <div class="focus-content">
+        <h3>Business Profit Research & Critical Thinking</h3>
+        <p class="focus-text">
+QUALITATIVE AND QUANTITATIVE RESEARCH focused on delivering in-depth industry insights through critical thinking applied to the latest production and manufacturing concepts from advanced industries and evaluating their applicability to the apparel and garment sector. This approach combines structured interviews, an understanding of human experiences, and rigorous production data analysis to identify meaningful patterns and trends. These insights are then validated through practical experiments to establish proof of concept across process and organizational improvement initiatives, total quality management practices, the introduction of advanced manufacturing concepts, and operational waste reduction. The research also emphasizes understanding human challenges, skill gaps, and organizational development opportunities, ultimately enabling skill enhancement, process optimization, and sustained profitability within the industry.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/ChatGPT-Image-Jan-29-v4.png">
+      </div>
+      <div class="focus-content">
+        <h3>Goal Alignment & Decision Reports</h3>
+        <p class="focus-text">
+Goal alignment is the process of ensuring that the goals of individuals and separate departments are clearly connected and aligned with the overall objectives of the organization. When everyone works toward a shared common goal, it not only enhances efficiency and productivity but also strengthens unity and collaboration across teams. This alignment brings greater clarity, sharper focus, improved cooperation among members, and stronger motivation within the workforce.
+
+According to the principles of the Theory of Constraints (TOC), each department typically concentrates on achieving its own departmental targets. However, in many organizations, this can lead to interdepartmental competition, where teams prioritize their own interests rather than the company’s overall objective. For example, the sales department may emphasize customer satisfaction through shorter lead times and lower costs, while production may prefer more comfortable lead times, larger batch sizes, and repeated styles for operational ease.
+
+Developing decision-making reports that objectively evaluate both perspectives and align them with the organization’s common goal enables better strategic alignment and smoother overall functioning.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/ChatGPT-Image-Jan-29-v3.png">
+      </div>
+      <div class="focus-content">
+        <h3>Operation Digitisation</h3>
+        <p class="focus-text">
+ For apparel industry, video recording software for operation digitisation can be a game changer. There are  many benefits in operation digitisation  like improved line balancing, process improvement,  operation standardisation,  collaboration across locations. It helps companies to be competitive and enjoy increased profits. Helps increase efficiency,  better collaboration within the factory and with the central office.   Digital OB charts for sewing, cutting, finishing, and washing contribute to better planning, enhanced capacity utilization, and stronger decision-making through structured reports. When OB charts are digitally shared and discussed, they support improved achievement of production targets. Digital OB is particularly beneficial in finishing, cutting, and washing operations. Once digitized, the data can be easily shared across multiple locations, fostering stronger team collaboration and helping uncover hidden capacities within the organization.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="focus-card">
+      <div class="focus-image">
+        <img src="https://raw.githubusercontent.com/akashreddy7780/my-website-assets/refs/heads/main/TOC%20Applications.png">
+      </div>
+      <div class="focus-content">
+        <h3>   TOC Applications</h3>
+        <p class="focus-text">
+TOC solutions help identify hidden capacities within factories, and many organizations have reported capacity improvements ranging from 20% to 50%. Lead times have been reduced by nearly half, and inventory levels have significantly decreased as a result of applying these principles.
+
+At IGAIT, we conduct pilot studies to uncover hidden capacities and enhance output by 20% to 50% through structured implementation of TOC methodologies. If you are interested in conducting a pilot study, please connect with us to explore the opportunity.
+        </p>
+        <button class="focus-readmore">Read More →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="igait-modal" id="igaitModal">
+  <div class="modal-content">
+    <div class="modal-close" id="modalClose">Close ✕</div>
+    <img id="modalImage" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <hr style="border:1px solid #C89B3C; margin:20px 0;">
+    <p id="modalText"></p>
+    <hr style="border:1px solid #C89B3C; margin:20px 0;">
+    <div class="modal-contact">
+  <p class="contact-title">For more details connect with us on</p>
+
+  <div class="contact-items">
+
+    <a href="tel:+91 9445731156" class="contact-item">
+      📞 +91 9445731156
+    </a>
+
+    <a href="mailto:sales@igaitconsulting.com" class="contact-item">
+      ✉️ sales@igaitconsulting.com
+    </a>
+
+    <a href="https://wa.me/+919445731156" target="_blank" class="contact-item">
+      💬 WhatsApp Chat
+    </a>
+
+  </div>
+</div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const app = document.querySelector(".igait-app");
+  if (!app) return;
+
+  const modal = app.querySelector("#igaitModal");
+  const modalTitle = app.querySelector("#modalTitle");
+  const modalText = app.querySelector("#modalText");
+  const modalImage = app.querySelector("#modalImage");
+  const closeBtn = app.querySelector("#modalClose");
+
+  // Event delegation (safer for Elementor)
+  app.addEventListener("click", function (e) {
+
+    const btn = e.target.closest(".focus-readmore");
+    if (!btn) return;
+
+    const card = btn.closest(".focus-card");
+    if (!card) return;
+
+    const title = card.querySelector("h3").innerText;
+    const text = card.querySelector(".focus-text").innerText;
+    const img = card.querySelector("img").src;
+
+    // Clone for zoom effect
+    const rect = card.getBoundingClientRect();
+    const clone = card.cloneNode(true);
+
+    clone.style.position = "fixed";
+    clone.style.top = rect.top + "px";
+    clone.style.left = rect.left + "px";
+    clone.style.width = rect.width + "px";
+    clone.style.height = rect.height + "px";
+    clone.style.margin = 0;
+    clone.style.zIndex = 9998;
+    clone.style.transition = "all 0.35s cubic-bezier(.2,.8,.2,1)";
+    document.body.appendChild(clone);
+
+    setTimeout(() => {
+      clone.style.top = "50%";
+      clone.style.left = "50%";
+      clone.style.transform = "translate(-50%, -50%) scale(1.1)";
+      clone.style.opacity = "0";
+    }, 10);
+
+    setTimeout(() => {
+      modalTitle.innerText = title;
+      modalText.innerText = text;
+      modalImage.src = img;
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      clone.remove();
+    }, 350);
+
+  });
+
+  // Close button
+  closeBtn.addEventListener("click", closeModal);
+
+  // Outside click
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  // ESC key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeModal();
+  });
+
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+});
+</script>
